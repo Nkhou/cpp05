@@ -4,16 +4,15 @@ int main()
 {
     try
     {
-        Bureaucrat Bureaucrat("najat", 151);
+        Bureaucrat Bureaucrat("najat", 150);
+        Form form("form", 150, 30);
+        Bureaucrat.signForm(form);
         // Bureaucrat.increment();
-        Bureaucrat.decrement();
+        // Bureaucrat.decrement();
     }
-    catch(Bureaucrat::GradeTooHighException& e)
+    catch(std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
-    catch(Bureaucrat::GradeTooLowException& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    return 0;
 }

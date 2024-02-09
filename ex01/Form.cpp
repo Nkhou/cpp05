@@ -1,8 +1,61 @@
 #include "Form.hpp"
-Form::Form(/* args */)
-{
-}
 
+Form::Form(std::string name, int gradeSign, int gradeExec) : Name(name), signe(false), gradeSign(gradeSign), gradeExec(gradeExec)
+{
+    if (gradeSign < 1 || gradeExec < 1)
+        throw Form::GradeTooHighException();
+    else if (gradeSign > 150 || gradeExec > 150)
+        throw Form::GradeTooLowException();
+}
+Form::Form(Form const &other) : Name(other.Name)
+{
+    *this = other;
+}
+Form &Form::operator=(Form const &other)
+{
+    signe = other.signe;
+    return *this;
+}
 Form::~Form()
 {
+}
+std::string Form::getName() const
+{
+    return Name;
+}
+bool Form::getSigne() const
+{
+    return signe;
+}
+int Form::getGradeSign() const
+{
+    return gradeSign;
+}
+int Form::getGradeExec() const
+{
+    return gradeExec;
+}
+void Form::beSigned(Bureaucrat &bureaucrat)
+{
+    if (bureaucrat.getGrade() > gradeSign)
+        throw Form::GradeTooLowException();
+    signe = true;
+}
+const char*Form::GradeTooHighException::what() const throw()
+{
+    return "Grade is too high";
+}
+const char*Form::GradeTooLowException::what() const throw()
+{
+    return "Grade is too low";
+}
+std::ostream& operator<<(std::ostream& out, Form &form)
+{
+    out << "Form " << form.getName() << " is ";
+    if (form.getSigne())
+        out << "signed";
+    else
+        out << "not signed";
+    out << " and requires grade " << form.getGradeSign() << " to be signed and grade " << form.getGradeExec() << " to be executed";
+    return out;
 }

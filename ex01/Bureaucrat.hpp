@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 #include <exception>
-
+#include "Form.hpp"
+class Form;
 class Bureaucrat
 {
     private:
@@ -33,6 +34,7 @@ class Bureaucrat
                 // GradeTooLowException(std::string message);
                 // virtual ~GradeTooLowException();
         };
+        void signForm(Form &form);
 };
 std::ostream& operator<<(std::ostream out, Bureaucrat &bureaucrat);
 #endif
