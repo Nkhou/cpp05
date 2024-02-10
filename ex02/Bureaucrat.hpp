@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 #include <exception>
-
+#include "Form.hpp"
+class Form;
 class Bureaucrat
 {
     private:
@@ -23,12 +24,17 @@ class Bureaucrat
         {
             public:
                 virtual const char* what() const throw();
+                // GradeTooHighException(std::string message);
+                // virtual ~GradeTooHighException();
         };
         class GradeTooLowException : public std::exception
         {
             public:
                 virtual const char* what() const throw();
+                // GradeTooLowException(std::string message);
+                // virtual ~GradeTooLowException();
         };
+        void signForm(Form &Form);
 };
 std::ostream& operator<<(std::ostream out, Bureaucrat &bureaucrat);
 #endif

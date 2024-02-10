@@ -5,8 +5,8 @@ int main()
     try
     {
         Bureaucrat Bureaucrat("najat", 150);
-        Form form("form", 1, 30);
-        Bureaucrat.signForm(form);
+        Form Form("Form", 1, 30);
+        Bureaucrat.signForm(Form);
         // Bureaucrat.increment();
         // Bureaucrat.decrement();
     }
