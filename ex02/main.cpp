@@ -1,14 +1,23 @@
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
     try
     {
-        Bureaucrat Bureaucrat("najat", 150);
-        Form Form("Form", 1, 30);
-        Bureaucrat.signForm(Form);
-        // Bureaucrat.increment();
-        // Bureaucrat.decrement();
+        Bureaucrat Bureaucrat("najat", 10);
+        ShrubberyCreationForm shrubbery("home");
+        RobotomyRequestForm robotomy("home");
+        PresidentialPardonForm presidential("home");
+
+        Bureaucrat.signForm(shrubbery);
+        Bureaucrat.executeForm(shrubbery);
+        Bureaucrat.signForm(robotomy);
+        Bureaucrat.executeForm(robotomy);
+        Bureaucrat.signForm(presidential);
+        Bureaucrat.executeForm(presidential);
     }
     catch(std::exception &e)
     {
