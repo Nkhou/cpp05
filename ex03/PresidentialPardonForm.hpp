@@ -13,5 +13,6 @@ class PresidentialPardonForm : public Form
         ~PresidentialPardonForm();
         PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
         void execute(Bureaucrat const &executor) const;
+        Form *makeForm(Form *form, std::string name, std::string target);
 };
 #endif

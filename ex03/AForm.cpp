@@ -1,4 +1,7 @@
 #include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 Form::Form() : Name("default"), signe(false), gradeSign(1), gradeExec(1)
 {
@@ -66,4 +69,21 @@ std::ostream& operator<<(std::ostream& out, Form &Form)
         out << "not signed";
     out << " and requires grade " << Form.getGradeSign() << " to be signed and grade " << Form.getGradeExec() << " to be executed";
     return out;
+}
+
+Form *Form::makeForm(std::string name, std::string target)
+{
+    Form *form = NULL;
+    PresidentialPardonForm presidentialPardonForm(target);
+    form = presidentialPardonForm.makeForm(form, name, target);
+    ShrubberyCreationForm shrubberyCreationForm(target);
+    form = shrubberyCreationForm.makeForm(form, name, target);
+    RobotomyRequestForm robotomyRequestForm(target);
+    form = robotomyRequestForm.makeForm(form, name, target);
+    if (form != NULL)
+    {
+        std::cout << "Intern creates " << form->getName() << std::endl;
+        return form;
+    }
+    return NULL;
 }

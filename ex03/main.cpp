@@ -1,7 +1,4 @@
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
 int main()
@@ -14,7 +11,7 @@ int main()
         form = intern.makeForm("ShrubberyCreationForm", "home");
         Bureaucrat.signForm(*form);
         Bureaucrat.executeForm(*form);
-        form = intern.makeForm("jjfhfhg", "home");
+        form = intern.makeForm("RobotomyRequestForm", "home");
         Bureaucrat.signForm(*form);
         Bureaucrat.executeForm(*form);
         form = intern.makeForm("PresidentialPardonForm", "home");

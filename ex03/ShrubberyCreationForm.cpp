@@ -24,7 +24,12 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
     }
     return *this;
 }
-
+Form *ShrubberyCreationForm::makeForm(Form *form, std::string name, std::string target)
+{
+    if (name == "ShrubberyCreationForm")
+        form = new ShrubberyCreationForm(target);
+    return form;
+}
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     if (!getSigne())

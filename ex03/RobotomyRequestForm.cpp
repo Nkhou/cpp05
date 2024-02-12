@@ -26,6 +26,12 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
         throw Form::GradeTooLowException();
      std::cout << this->target << " has been robotomized successfully 50% of the time" << std::endl;
 }
+Form *RobotomyRequestForm::makeForm(Form *form, std::string name, std::string target)
+{
+    if (name == "RobotomyRequestForm")
+        form = new RobotomyRequestForm(target);
+    return form;
+}
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 }

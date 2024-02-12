@@ -24,22 +24,13 @@ Intern &Intern::operator=(Intern const &other)
 
 Form *Intern::makeForm(std::string name, std::string target)
 {
-    if (name == "ShrubberyCreationForm")
-    {
-        return new ShrubberyCreationForm(target);
-    }
-    else if (name == "RobotomyRequestForm")
-    {
-        return new RobotomyRequestForm(target);
-    }
-    else if (name == "PresidentialPardonForm")
-    {
-        return new PresidentialPardonForm(target);
-    }
-    else
+    Form *form = NULL;
+    form = form->makeForm(name, target);
+    if (form == NULL)
     {
         throw Intern::FormNotFoundException();
     }
+    return form;
 }
 const char *Intern::FormNotFoundException::what() const throw()
 {

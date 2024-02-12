@@ -24,15 +24,11 @@ class Bureaucrat
         {
             public:
                 virtual const char* what() const throw();
-                // GradeTooHighException(std::string message);
-                // virtual ~GradeTooHighException();
         };
         class GradeTooLowException : public std::exception
         {
             public:
                 virtual const char* what() const throw();
-                // GradeTooLowException(std::string message);
-                // virtual ~GradeTooLowException();
         };
         void signForm(Form &form);
 };

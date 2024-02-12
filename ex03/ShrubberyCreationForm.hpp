@@ -14,10 +14,12 @@ class ShrubberyCreationForm : public Form
         ~ShrubberyCreationForm();
         ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
         void execute(Bureaucrat const &executor) const;
+        Form *makeForm(Form *form, std::string name, std::string target);
         class FileNotOpenedException : public std::exception
         {
             public:
                 virtual const char* what() const throw();
         };
+        
 };
 #endif
