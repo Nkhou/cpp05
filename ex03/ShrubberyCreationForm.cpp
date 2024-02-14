@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:21:34 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 16:27:31 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 145, 137), target("default")
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target("default")
 {
 }
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("ShrubberyCreationForm", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
 }
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : Form("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm("ShrubberyCreationForm", 145, 137)
 {
     *this = other;
 }
@@ -24,31 +36,31 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
     }
     return *this;
 }
-Form *ShrubberyCreationForm::makeForm(Form *form, std::string name, std::string target)
+AForm *ShrubberyCreationForm::makeForm(AForm *AForm, std::string name, std::string target)
 {
     if (name == "ShrubberyCreationForm")
-        form = new ShrubberyCreationForm(target);
-    return form;
+        AForm = new ShrubberyCreationForm(target);
+    return AForm;
 }
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     if (!getSigne())
-        throw Form::FormNotSignedException();
+        throw AForm::AFormNotSignedException();
     if (executor.getGrade() > getGradeExec())
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     std::ofstream file(std::string(this->target + "_shrubbery").c_str());
     if (!file.is_open())
         throw ShrubberyCreationForm::FileNotOpenedException();
-    file << "      /\\      " << std::endl;
-    file << "     /\\\\     " << std::endl;
-    file << "    /\\\\\\    " << std::endl;
-    file << "   /*/\\\\\\   " << std::endl;
-    file << "  /\\O\\\\/\\  " << std::endl;
-    file << " /\\*\\/\\*/\\ " << std::endl;
-    file << "/\\O\\/\\/*//\\" << std::endl;
+     file << "      /\\      " << std::endl;
+    file << "     /\\\\\\     " << std::endl;
+    file << "    /\\\\*\\\\    " << std::endl;
+    file << "   /*/\\\\\\*\\   " << std::endl;
+    file << "  /\\O\\*\\O\\/\\  " << std::endl;
+    file << " /\\*\\*/\\*\\*/\\ " << std::endl;
+    file << "/\\O\\/\\O\\/*///\\" << std::endl;
     file << "      ||      " << std::endl;
     file << "      ||      " << std::endl;
-    file <<  "     ||      " << std::endl;
+    file <<  "      ||      " << std::endl;
     file.close();
 }
 

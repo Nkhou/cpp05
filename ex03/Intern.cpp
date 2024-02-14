@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:21:02 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "Intern.hpp"
 
 Intern::Intern()
@@ -22,19 +35,19 @@ Intern &Intern::operator=(Intern const &other)
     return *this;
 }
 
-Form *Intern::makeForm(std::string name, std::string target)
+AForm *Intern::makeForm(std::string name, std::string target)
 {
-    Form *form = NULL;
-    form = form->makeForm(name, target);
-    if (form == NULL)
+    AForm *AForm = NULL;
+    AForm = AForm->makeForm(name, target);
+    if (AForm == NULL)
     {
-        throw Intern::FormNotFoundException();
+        throw Intern::AFormNotFoundException();
     }
-    return form;
+    return AForm;
 }
-const char *Intern::FormNotFoundException::what() const throw()
+const char *Intern::AFormNotFoundException::what() const throw()
 {
-    return "Form not found";
+    return "AForm not found";
 }
 Intern::~Intern()
 {

@@ -1,8 +1,20 @@
-#ifndef PRESIDENTIALPARDONFORM_H
-#define PRESIDENTIALPARDONFORM_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:21:21 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PresidentialPardonForm_H
+#define PresidentialPardonForm_H
 #include "AForm.hpp"
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
     private:
         std::string target;
@@ -13,6 +25,6 @@ class PresidentialPardonForm : public Form
         ~PresidentialPardonForm();
         PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
         void execute(Bureaucrat const &executor) const;
-        Form *makeForm(Form *form, std::string name, std::string target);
+        AForm *makeForm(AForm *AForm, std::string name, std::string target);
 };
 #endif

@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:21:39 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_H
-#define SHRUBBERYCREATIONFORM_H
+#ifndef ShrubberyCreationForm_H
+#define ShrubberyCreationForm_H
 #include "AForm.hpp"
 
-class ShrubberyCreationForm : public Form
+class ShrubberyCreationForm : public AForm
 {
     private:
         std::string target;
@@ -14,7 +25,7 @@ class ShrubberyCreationForm : public Form
         ~ShrubberyCreationForm();
         ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
         void execute(Bureaucrat const &executor) const;
-        Form *makeForm(Form *form, std::string name, std::string target);
+        AForm *makeForm(AForm *AForm, std::string name, std::string target);
         class FileNotOpenedException : public std::exception
         {
             public:

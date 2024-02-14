@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:21:25 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyRequestForm", 72, 45), target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), target(target)
 {
 }
-RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm", 72, 45), target("default")
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), target("default")
 {
 }
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) : Form("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) : AForm("RobotomyRequestForm", 72, 45)
 {
     *this = other;
 }
@@ -21,16 +33,16 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
     if (!getSigne())
-        throw Form::FormNotSignedException();
+        throw AForm::AFormNotSignedException();
     if (executor.getGrade() > getGradeExec())
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
      std::cout << this->target << " has been robotomized successfully 50% of the time" << std::endl;
 }
-Form *RobotomyRequestForm::makeForm(Form *form, std::string name, std::string target)
+AForm *RobotomyRequestForm::makeForm(AForm *AForm, std::string name, std::string target)
 {
     if (name == "RobotomyRequestForm")
-        form = new RobotomyRequestForm(target);
-    return form;
+        AForm = new RobotomyRequestForm(target);
+    return AForm;
 }
 RobotomyRequestForm::~RobotomyRequestForm()
 {

@@ -1,89 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:20:45 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-Form::Form() : Name("default"), signe(false), gradeSign(1), gradeExec(1)
+AForm::AForm() : Name("default"), signe(false), gradeSign(1), gradeExec(1)
 {
 }
-Form::Form(std::string name, int gradeSign, int gradeExec) : Name(name), signe(false), gradeSign(gradeSign), gradeExec(gradeExec)
+AForm::AForm(std::string name, int gradeSign, int gradeExec) : Name(name), signe(false), gradeSign(gradeSign), gradeExec(gradeExec)
 {
     if (gradeSign < 1 || gradeExec < 1)
-        throw Form::GradeTooHighException();
+        throw AForm::GradeTooHighException();
     else if (gradeSign > 150 || gradeExec > 150)
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
 }
-Form::Form(Form const &other) : Name(other.Name)
+AForm::AForm(AForm const &other) : Name(other.Name)
 {
     *this = other;
 }
-Form &Form::operator=(Form const &other)
+AForm &AForm::operator=(AForm const &other)
 {
     signe = other.signe;
     return *this;
 }
-Form::~Form()
+AForm::~AForm()
 {
 }
-std::string Form::getName() const
+std::string AForm::getName() const
 {
     return Name;
 }
-bool Form::getSigne() const
+bool AForm::getSigne() const
 {
     return signe;
 }
-int Form::getGradeSign() const
+int AForm::getGradeSign() const
 {
     return gradeSign;
 }
-int Form::getGradeExec() const
+int AForm::getGradeExec() const
 {
     return gradeExec;
 }
-void Form::beSigned(Bureaucrat &bureaucrat)
+void AForm::beSigned(Bureaucrat &bureaucrat)
 {
     if (bureaucrat.getGrade() > gradeSign)
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     signe = true;
 }
-const char*Form::GradeTooHighException::what() const throw()
+const char*AForm::GradeTooHighException::what() const throw()
 {
     return "Grade is too high";
 }
-const char*Form::GradeTooLowException::what() const throw()
+const char*AForm::GradeTooLowException::what() const throw()
 {
     return "Grade is too low";
 }
-const char*Form::FormNotSignedException::what() const throw()
+const char*AForm::AFormNotSignedException::what() const throw()
 {
-    return "Form is not signed";
+    return "AForm is not signed";
 }
 
-std::ostream& operator<<(std::ostream& out, Form &Form)
+std::ostream& operator<<(std::ostream& out, AForm &AForm)
 {
-    out << "Form " << Form.getName() << " is ";
-    if (Form.getSigne())
+    out << "AForm " << AForm.getName() << " is ";
+    if (AForm.getSigne())
         out << "signed";
     else
         out << "not signed";
-    out << " and requires grade " << Form.getGradeSign() << " to be signed and grade " << Form.getGradeExec() << " to be executed";
+    out << " and requires grade " << AForm.getGradeSign() << " to be signed and grade " << AForm.getGradeExec() << " to be executed";
     return out;
 }
 
-Form *Form::makeForm(std::string name, std::string target)
+AForm *AForm::makeForm(std::string name, std::string target)
 {
-    Form *form = NULL;
-    PresidentialPardonForm presidentialPardonForm(target);
-    form = presidentialPardonForm.makeForm(form, name, target);
-    ShrubberyCreationForm shrubberyCreationForm(target);
-    form = shrubberyCreationForm.makeForm(form, name, target);
-    RobotomyRequestForm robotomyRequestForm(target);
-    form = robotomyRequestForm.makeForm(form, name, target);
-    if (form != NULL)
+    AForm *AForm = NULL;
+    PresidentialPardonForm PresidentialPardonForm(target);
+    AForm = PresidentialPardonForm.makeForm(AForm, name, target);
+    ShrubberyCreationForm ShrubberyCreationForm(target);
+    AForm = ShrubberyCreationForm.makeForm(AForm, name, target);
+    RobotomyRequestForm RobotomyRequestForm(target);
+    AForm = RobotomyRequestForm.makeForm(AForm, name, target);
+    if (AForm != NULL)
     {
-        std::cout << "Intern creates " << form->getName() << std::endl;
-        return form;
+        std::cout << "Intern creates " << AForm->getName() << std::endl;
+        return AForm;
     }
     return NULL;
 }
