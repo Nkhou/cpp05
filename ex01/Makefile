@@ -3,12 +3,12 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = main.cpp\
 		Bureaucrat.cpp\
-		Form.cpp \
+		AForm.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-%.o: %.cpp Bureaucrat.hpp Form.hpp
+%.o: %.cpp Bureaucrat.hpp AForm.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 all: $(NAME)
 clean:

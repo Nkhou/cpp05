@@ -1,6 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:18:15 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 17:57:53 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-
+Bureaucrat::Bureaucrat() : _name("default")
+{
+}
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
 {
     if (grade < 1)
@@ -56,15 +71,15 @@ std::ostream& operator<<(std::ostream& out, Bureaucrat &bureaucrat)
     return out;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(Form &Form)
 {
     try
     {
-        form.beSigned(*this);
-        std::cout << _name << " signs " << form.getName() << std::endl;
+        Form.beSigned(*this);
+        std::cout << _name << " signs " << Form.getName() << std::endl;
     }
     catch (std::exception &e)
     {
-        std::cout << _name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+        std::cout << _name << " cannot sign " << Form.getName() << " because " << e.what() << std::endl;
     }
 }

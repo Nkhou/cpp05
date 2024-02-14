@@ -1,7 +1,20 @@
-#ifndef ROBOTOMYREQUESTFORM_H
-#define ROBOTOMYREQUESTFORM_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:20:05 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 16:16:49 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#ifndef RobotomyRequestFORM_H
+#define RobotomyRequestFORM_H
 #include "AForm.hpp"
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
     private:
         std::string target;

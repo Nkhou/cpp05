@@ -1,16 +1,30 @@
-#ifndef FORM_H
-#define FORM_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:18:45 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 17:57:31 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#ifndef Form_H
+#define Form_H
 
 #include "Bureaucrat.hpp"
 class Bureaucrat;
 class Form
 {
     private:
-        std::string Name;
+        std::string const Name;
         bool signe;
-        int gradeSign;
-        int gradeExec;
+        int const gradeSign;
+        int const gradeExec;
     public:
+        Form();
         Form(std::string name, int gradeSign, int gradeExec);
         Form(Form const &other);
         Form &operator=(Form const &other);
@@ -30,9 +44,9 @@ class Form
             public:
                 virtual const char* what() const throw();
         };
+        
 };
-
-std::ostream& operator<<(std::ostream out, Form &form);
+std::ostream& operator<<(std::ostream& out, Form &Form);
 
 
 #endif

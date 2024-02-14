@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:18:03 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 15:33:32 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #ifndef BUROCRAT_HPP
 #define BUROCRAT_HPP
 
@@ -11,6 +24,7 @@ class Bureaucrat
         std::string const _name;
         int _grade;
     public:
+        Bureaucrat();
         Bureaucrat(std::string const name, int grade);
         Bureaucrat(Bureaucrat const &other);
         Bureaucrat &operator=(Bureaucrat const &other);
@@ -30,5 +44,5 @@ class Bureaucrat
                 virtual const char* what() const throw();
         };
 };
-std::ostream& operator<<(std::ostream out, Bureaucrat &bureaucrat);
+std::ostream& operator<<(std::ostream& out, Bureaucrat &bureaucrat);
 #endif

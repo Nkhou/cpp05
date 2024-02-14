@@ -1,5 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:17:55 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 15:33:24 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat() : _name("default") 
+{
+}
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
 {
     if (grade < 1)
@@ -48,19 +64,6 @@ const char*Bureaucrat::GradeTooLowException::what() const throw()
 {
     return "Grade is too low";
 }
-// Bureaucrat::GradeTooLowException::GradeTooLowException()
-// {
-// }
-
-// Bureaucrat::GradeTooHighException::GradeTooHighException()
-// {
-// }
-// Bureaucrat::GradeTooHighException::~GradeTooHighException()
-// {
-// }
-// Bureaucrat::GradeTooLowException::~GradeTooLowException()
-// {
-// }
 
 std::ostream& operator<<(std::ostream& out, Bureaucrat &bureaucrat)
 {

@@ -1,12 +1,25 @@
-#ifndef Form_H
-#define Form_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:19:14 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 16:13:37 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#ifndef AForm_H
+#define AForm_H
 
 #include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
 
 class Bureaucrat;
-class Form
+class AForm
 {
     private:
         std::string Name;
@@ -14,17 +27,17 @@ class Form
         int gradeSign;
         int gradeExec;
     public:
-        Form();
-        Form(std::string name, int gradeSign, int gradeExec);
-        Form(Form const &other);
-        Form &operator=(Form const &other);
-        virtual ~Form();
+        AForm();
+        AForm(std::string name, int gradeSign, int gradeExec);
+        AForm(AForm const &other);
+        AForm &operator=(AForm const &other);
+        virtual ~AForm();
         std::string getName() const;
         bool getSigne() const;
         int getGradeSign() const;
         int getGradeExec() const;
         void beSigned(Bureaucrat &bureaucrat);
-        class FormNotSignedException : public std::exception
+        class AFormNotSignedException : public std::exception
         {
             public:
                 virtual const char* what() const throw();
@@ -42,7 +55,6 @@ class Form
         virtual void  execute(Bureaucrat const &executor) const = 0;
 };
 
-std::ostream& operator<<(std::ostream out, Form &Form);
-
+std::ostream& operator<<(std::ostream& out, AForm &AForm);
 
 #endif

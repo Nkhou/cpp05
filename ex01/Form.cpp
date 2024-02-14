@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 15:18:36 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 17:57:22 by nkhoudro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "Form.hpp"
 
 Form::Form(std::string name, int gradeSign, int gradeExec) : Name(name), signe(false), gradeSign(gradeSign), gradeExec(gradeExec)
@@ -49,13 +62,13 @@ const char*Form::GradeTooLowException::what() const throw()
 {
     return "Grade is too low";
 }
-std::ostream& operator<<(std::ostream& out, Form &form)
+std::ostream& operator<<(std::ostream& out, Form &Form)
 {
-    out << "Form " << form.getName() << " is ";
-    if (form.getSigne())
+    out << "Form " << Form.getName() << " is ";
+    if (Form.getSigne())
         out << "signed";
     else
         out << "not signed";
-    out << " and requires grade " << form.getGradeSign() << " to be signed and grade " << form.getGradeExec() << " to be executed";
+    out << " and requires grade " << Form.getGradeSign() << " to be signed and grade " << Form.getGradeExec() << " to be executed";
     return out;
 }
