@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:18:08 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 15:34:15 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:21:59 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@ int main()
 {
     try
     {
-        Bureaucrat Bureaucrat("najat", 150);
-        // Bureaucrat.increment();
+        Bureaucrat Bureaucrat;
+        Bureaucrat.increment();
+        std::cout << Bureaucrat << std::endl;
         Bureaucrat.decrement();
+        std::cout << Bureaucrat << std::endl;
     }
-    catch(Bureaucrat::GradeTooHighException& e)
+    catch(std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
-    catch(Bureaucrat::GradeTooLowException& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+
 }

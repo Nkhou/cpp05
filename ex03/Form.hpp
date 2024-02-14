@@ -5,21 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/14 15:20:49 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*   Created: 2024/02/14 19:54:49 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 19:54:54 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef AForm_H
-#define AForm_H
+#ifndef Form_H
+#define Form_H
 
 #include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
 
 class Bureaucrat;
-class AForm
+class Form
 {
     private:
         std::string Name;
@@ -27,17 +26,17 @@ class AForm
         int gradeSign;
         int gradeExec;
     public:
-        AForm();
-        AForm(std::string name, int gradeSign, int gradeExec);
-        AForm(AForm const &other);
-        AForm &operator=(AForm const &other);
-        virtual ~AForm();
+        Form();
+        Form(std::string name, int gradeSign, int gradeExec);
+        Form(Form const &other);
+        Form &operator=(Form const &other);
+        virtual ~Form();
         std::string getName() const;
         bool getSigne() const;
         int getGradeSign() const;
         int getGradeExec() const;
         void beSigned(Bureaucrat &bureaucrat);
-        class AFormNotSignedException : public std::exception
+        class FormNotSignedException : public std::exception
         {
             public:
                 virtual const char* what() const throw();
@@ -53,10 +52,10 @@ class AForm
                 virtual const char* what() const throw();
         };
         virtual void  execute(Bureaucrat const &executor) const = 0;
-        AForm *makeForm(std::string name, std::string target);
+        Form *makeForm(std::string name, std::string target);
 };
 
-std::ostream& operator<<(std::ostream out, AForm &AForm);
+std::ostream& operator<<(std::ostream out, Form &Form);
 
 
 #endif

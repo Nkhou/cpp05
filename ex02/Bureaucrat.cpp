@@ -6,14 +6,16 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:19:19 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:13:37 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:05:10 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
+{
+}
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
 {
     if (grade < 1)
@@ -69,7 +71,7 @@ std::ostream& operator<<(std::ostream& out, Bureaucrat &bureaucrat)
     return out;
 }
 
-void Bureaucrat::signAForm(AForm &AForm)
+void Bureaucrat::signForm(AForm &AForm)
 {
     try
     {
@@ -82,7 +84,7 @@ void Bureaucrat::signAForm(AForm &AForm)
     }
 }
 
-void Bureaucrat::executeAForm(AForm const &AForm)
+void Bureaucrat::executeForm(AForm const &AForm)
 {
     if (AForm.getSigne() == false)
         std::cout << _name << " cannot execute " << AForm.getName() << " because " << "AForm is not signed" << std::endl;

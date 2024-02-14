@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:11 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:30:11 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ int main()
     {
         Bureaucrat Bureaucrat("najat", 10);
         Intern intern;
-        AForm *AForm;
-        AForm = intern.makeForm("ShrubberyCreationForm", "home");
-        Bureaucrat.signAForm(*AForm);
-        Bureaucrat.executeAForm(*AForm);
-        AForm = intern.makeForm("RobotomyRequestForm", "home");
-        Bureaucrat.signAForm(*AForm);
-        Bureaucrat.executeAForm(*AForm);
-        AForm = intern.makeForm("PresidentialPardonForm", "home");
-        Bureaucrat.signAForm(*AForm);
-        Bureaucrat.executeAForm(*AForm);
+        Form *Form;
+        Form = intern.makeForm("ShrubberyCreationForm", "home");
+        Bureaucrat.signForm(*Form);
+        Bureaucrat.executeForm(*Form);
+        Form = intern.makeForm("RobotomyRequestForm", "home");
+        Bureaucrat.signForm(*Form);
+        Bureaucrat.executeForm(*Form);
+        Form = intern.makeForm("PresidentialPardonForm", "home");
+        Bureaucrat.signForm(*Form);
+        Bureaucrat.executeForm(*Form);
     }
     catch(std::exception &e)
     {

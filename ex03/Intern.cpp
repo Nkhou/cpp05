@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:02 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:08:51 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ Intern &Intern::operator=(Intern const &other)
     return *this;
 }
 
-AForm *Intern::makeForm(std::string name, std::string target)
+Form *Intern::makeForm(std::string name, std::string target)
 {
-    AForm *AForm = NULL;
-    AForm = AForm->makeForm(name, target);
-    if (AForm == NULL)
+    Form *Form = NULL;
+    Form = Form->makeForm(name, target);
+    if (Form == NULL)
     {
-        throw Intern::AFormNotFoundException();
+        throw Intern::FormNotFoundException();
     }
-    return AForm;
+    return Form;
 }
-const char *Intern::AFormNotFoundException::what() const throw()
+const char *Intern::FormNotFoundException::what() const throw()
 {
-    return "AForm not found";
+    return "Form not found";
 }
 Intern::~Intern()
 {

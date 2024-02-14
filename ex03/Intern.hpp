@@ -6,14 +6,14 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:07 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:08:36 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef INTERN_H
 #define INTERN_H
-#include "AForm.hpp"
+#include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -27,8 +27,8 @@ class Intern
         Intern(Intern const &other);
         ~Intern();
         Intern &operator=(Intern const &other);
-        AForm *makeForm(std::string name, std::string target);
-        class AFormNotFoundException : public std::exception
+        Form *makeForm(std::string name, std::string target);
+        class FormNotFoundException : public std::exception
         {
             public:
                 virtual const char* what() const throw();

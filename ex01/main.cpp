@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:18:51 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:13:22 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:01:55 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int main()
 {
     try
     {
-        Bureaucrat Bureaucrat("najat", 150);
-        AForm AForm("AForm", 1, 30);
-        Bureaucrat.signAForm(AForm);
+        Bureaucrat Bureaucrat("najat", 1);
+        Form Form("Form", 2, 30);
+        Bureaucrat.signForm(Form);
         // Bureaucrat.increment();
         // Bureaucrat.decrement();
     }

@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:19:25 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:13:37 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:05:23 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Bureaucrat
         std::string const _name;
         int _grade;
     public:
+        Bureaucrat();
         Bureaucrat(std::string const name, int grade);
         Bureaucrat(Bureaucrat const &other);
         Bureaucrat &operator=(Bureaucrat const &other);
@@ -44,8 +45,8 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw();
         };
-        void signAForm(AForm &AForm);
-        void executeAForm(AForm const &AForm);
+        void signForm(AForm &AForm);
+        void executeForm(AForm const &AForm);
 };
 std::ostream& operator<<(std::ostream out, Bureaucrat &bureaucrat);
 #endif

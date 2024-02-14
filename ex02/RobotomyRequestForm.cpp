@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:20:00 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:16:35 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:24:46 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,16 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 }
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+    static int count = 0;
     if (!getSigne())
         throw AForm::AFormNotSignedException();
     if (executor.getGrade() > getGradeExec())
         throw AForm::GradeTooLowException();
-     std::cout << this->target << " has been robotomized successfully 50% of the time" << std::endl;
+    if (count % 2 == 0)
+        std::cout << this->target << " has been robotomized successfully" << std::endl;
+    else
+        std::cout << this->target << " faild to robotomized" << std::endl;
+    count++;
 }
 RobotomyRequestForm::~RobotomyRequestForm()
 {

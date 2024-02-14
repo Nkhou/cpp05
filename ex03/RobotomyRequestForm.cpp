@@ -6,19 +6,19 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:25 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:28:50 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyRequestForm", 72, 45), target(target)
 {
 }
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), target("default")
+RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm", 72, 45), target("default")
 {
 }
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) : AForm("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) : Form("RobotomyRequestForm", 72, 45)
 {
     *this = other;
 }
@@ -32,17 +32,22 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 }
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+    static int count = 0;
     if (!getSigne())
-        throw AForm::AFormNotSignedException();
+        throw Form::FormNotSignedException();
     if (executor.getGrade() > getGradeExec())
-        throw AForm::GradeTooLowException();
-     std::cout << this->target << " has been robotomized successfully 50% of the time" << std::endl;
+        throw Form::GradeTooLowException();
+    if (count % 2 == 0)
+        std::cout << this->target << " has been robotomized successfully" << std::endl;
+    else
+        std::cout << this->target << " faild to robotomized" << std::endl;
+    count++;
 }
-AForm *RobotomyRequestForm::makeForm(AForm *AForm, std::string name, std::string target)
+Form *RobotomyRequestForm::makeForm(Form *Form, std::string name, std::string target)
 {
     if (name == "RobotomyRequestForm")
-        AForm = new RobotomyRequestForm(target);
-    return AForm;
+        Form = new RobotomyRequestForm(target);
+    return Form;
 }
 RobotomyRequestForm::~RobotomyRequestForm()
 {

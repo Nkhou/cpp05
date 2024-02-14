@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:19:34 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 18:00:38 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:28:13 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int main()
         ShrubberyCreationForm shrubbery("home");
         RobotomyRequestForm robotomy("home");
         PresidentialPardonForm presidential("home");
-        Bureaucrat.signAForm(shrubbery);
-        Bureaucrat.executeAForm(shrubbery);
-        Bureaucrat.signAForm(robotomy);
-        Bureaucrat.executeAForm(robotomy);
-        Bureaucrat.signAForm(presidential);
-        Bureaucrat.executeAForm(presidential);
+        Bureaucrat.signForm(shrubbery);
+        Bureaucrat.executeForm(shrubbery);
+        Bureaucrat.signForm(robotomy);
+        Bureaucrat.executeForm(robotomy);
+        Bureaucrat.signForm(presidential);
+        Bureaucrat.executeForm(presidential);
     }
     catch(std::exception &e)
     {

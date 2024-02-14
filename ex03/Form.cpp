@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/14 15:18:36 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 20:01:11 by nkhoudro         ###   ########.fr       */
+/*   Created: 2024/02/14 19:54:24 by nkhoudro          #+#    #+#             */
+/*   Updated: 2024/02/14 19:54:31 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
 Form::Form() : Name("default"), signe(false), gradeSign(1), gradeExec(1)
 {
 }
@@ -22,7 +25,7 @@ Form::Form(std::string name, int gradeSign, int gradeExec) : Name(name), signe(f
     else if (gradeSign > 150 || gradeExec > 150)
         throw Form::GradeTooLowException();
 }
-Form::Form(Form const &other) : Name(other.Name), gradeSign(other.gradeSign), gradeExec(other.gradeExec)
+Form::Form(Form const &other) : Name(other.Name)
 {
     *this = other;
 }
@@ -64,6 +67,11 @@ const char*Form::GradeTooLowException::what() const throw()
 {
     return "Grade is too low";
 }
+const char*Form::FormNotSignedException::what() const throw()
+{
+    return "Form is not signed";
+}
+
 std::ostream& operator<<(std::ostream& out, Form &Form)
 {
     out << "Form " << Form.getName() << " is ";
@@ -73,4 +81,21 @@ std::ostream& operator<<(std::ostream& out, Form &Form)
         out << "not signed";
     out << " and requires grade " << Form.getGradeSign() << " to be signed and grade " << Form.getGradeExec() << " to be executed";
     return out;
+}
+
+Form *Form::makeForm(std::string name, std::string target)
+{
+    Form *Form = NULL;
+    PresidentialPardonForm PresidentialPardonForm(target);
+    Form = PresidentialPardonForm.makeForm(Form, name, target);
+    ShrubberyCreationForm ShrubberyCreationForm(target);
+    Form = ShrubberyCreationForm.makeForm(Form, name, target);
+    RobotomyRequestForm RobotomyRequestForm(target);
+    Form = RobotomyRequestForm.makeForm(Form, name, target);
+    if (Form != NULL)
+    {
+        std::cout << "Intern creates " << Form->getName() << std::endl;
+        return Form;
+    }
+    return NULL;
 }

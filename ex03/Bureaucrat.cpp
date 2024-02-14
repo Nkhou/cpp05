@@ -6,14 +6,14 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:20:54 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:13:37 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 19:56:02 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
-Bureaucrat::Bureaucrat() : _name("default")
+#include "Form.hpp"
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 {
 }
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
@@ -71,28 +71,28 @@ std::ostream& operator<<(std::ostream& out, Bureaucrat &bureaucrat)
     return out;
 }
 
-void Bureaucrat::signAForm(AForm &AForm)
+void Bureaucrat::signForm(Form &Form)
 {
     try
     {
-        AForm.beSigned(*this);
-        std::cout << _name << " signs " << AForm.getName() << std::endl;
+        Form.beSigned(*this);
+        std::cout << _name << " signs " << Form.getName() << std::endl;
     }
     catch (std::exception &e)
     {
-        std::cout << _name << " cannot sign " << AForm.getName() << " because " << e.what() << std::endl;
+        std::cout << _name << " cannot sign " << Form.getName() << " because " << e.what() << std::endl;
     }
 }
 
-void Bureaucrat::executeAForm(AForm const &AForm)
+void Bureaucrat::executeForm(Form const &Form)
 {
-    if (AForm.getSigne() == false)
-        std::cout << _name << " cannot execute " << AForm.getName() << " because " << "AForm is not signed" << std::endl;
-    else if (_grade > AForm.getGradeExec())
-        std::cout << _name << " cannot execute " << AForm.getName() << " because " << "Grade is too low" << std::endl;
+    if (Form.getSigne() == false)
+        std::cout << _name << " cannot execute " << Form.getName() << " because " << "Form is not signed" << std::endl;
+    else if (_grade > Form.getGradeExec())
+        std::cout << _name << " cannot execute " << Form.getName() << " because " << "Grade is too low" << std::endl;
     else
     {
-        AForm.execute(*this);
-        std::cout << _name << " executes " << AForm.getName() << std::endl;
+        Form.execute(*this);
+        std::cout << _name << " executes " << Form.getName() << std::endl;
     }
 }

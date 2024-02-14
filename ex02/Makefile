@@ -9,11 +9,15 @@ SRCS = main.cpp\
 		PresidentialPardonForm.cpp\
 
 OBJS = $(SRCS:.cpp=.o)
+
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-%.o: %.cpp Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
+
+%.o: %.cpp Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
+
 all: $(NAME)
+
 clean:
 	rm -f $(OBJS)
 fclean: clean

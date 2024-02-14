@@ -6,15 +6,15 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:21 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 16:18:27 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/14 19:56:50 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PresidentialPardonForm_H
 #define PresidentialPardonForm_H
-#include "AForm.hpp"
+#include "Form.hpp"
 
-class PresidentialPardonForm : public AForm
+class PresidentialPardonForm : public Form
 {
     private:
         std::string target;
@@ -25,6 +25,6 @@ class PresidentialPardonForm : public AForm
         ~PresidentialPardonForm();
         PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
         void execute(Bureaucrat const &executor) const;
-        AForm *makeForm(AForm *AForm, std::string name, std::string target);
+        Form *makeForm(Form *Form, std::string name, std::string target);
 };
 #endif
