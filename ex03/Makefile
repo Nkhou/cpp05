@@ -3,7 +3,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = main.cpp\
 		Bureaucrat.cpp\
-		Form.cpp \
+		AForm.cpp \
 		RobotomyRequestForm.cpp\
 		ShrubberyCreationForm.cpp \
 		PresidentialPardonForm.cpp\
@@ -14,7 +14,7 @@ OBJS = $(SRCS:.cpp=.o)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp Intern.hpp
+%.o: %.cpp Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp Intern.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

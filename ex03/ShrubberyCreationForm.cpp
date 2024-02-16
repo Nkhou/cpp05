@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:34 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 19:58:28 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:45:31 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include <fstream>
 #include <string>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 145, 137), target("default")
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target("default")
 {
 }
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("ShrubberyCreationForm", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
 }
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : Form("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm("ShrubberyCreationForm", 145, 137)
 {
     *this = other;
 }
@@ -36,7 +36,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
     }
     return *this;
 }
-Form *ShrubberyCreationForm::makeForm(Form *Form, std::string name, std::string target)
+AForm *ShrubberyCreationForm::makeForm(AForm *Form, std::string name, std::string target)
 {
     if (name == "ShrubberyCreationForm")
         Form = new ShrubberyCreationForm(target);
@@ -45,9 +45,9 @@ Form *ShrubberyCreationForm::makeForm(Form *Form, std::string name, std::string 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     if (!getSigne())
-        throw Form::FormNotSignedException();
+        throw AForm::FormNotSignedException();
     if (executor.getGrade() > getGradeExec())
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     std::ofstream file(std::string(this->target + "_shrubbery").c_str());
     if (!file.is_open())
         throw ShrubberyCreationForm::FileNotOpenedException();

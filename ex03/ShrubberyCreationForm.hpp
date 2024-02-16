@@ -6,15 +6,15 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:39 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 19:58:46 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:46:01 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ShrubberyCreationForm_H
 #define ShrubberyCreationForm_H
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class ShrubberyCreationForm : public Form
+class ShrubberyCreationForm : public AForm
 {
     private:
         std::string target;
@@ -25,7 +25,7 @@ class ShrubberyCreationForm : public Form
         ~ShrubberyCreationForm();
         ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
         void execute(Bureaucrat const &executor) const;
-        Form *makeForm(Form *Form, std::string name, std::string target);
+        AForm *makeForm(AForm *Form, std::string name, std::string target);
         class FileNotOpenedException : public std::exception
         {
             public:

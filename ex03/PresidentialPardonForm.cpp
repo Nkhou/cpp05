@@ -6,20 +6,20 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:16 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 19:57:36 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:53:09 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("PresidentialPardonForm", 25, 5), target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), target(target)
 {
 }
-PresidentialPardonForm::PresidentialPardonForm() : Form("PresidentialPardonForm", 25, 5), target("default")
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), target("default")
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) : Form("PresidentialPardonForm", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) : AForm("PresidentialPardonForm", 25, 5)
 {
     *this = other;
 }
@@ -36,12 +36,12 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
     if (!getSigne())
-        throw Form::FormNotSignedException();
+        throw AForm::FormNotSignedException();
     if (executor.getGrade() > getGradeExec())
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     std::cout << this->target << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
-Form *PresidentialPardonForm::makeForm(Form *Form, std::string name, std::string target)
+AForm *PresidentialPardonForm::makeForm(AForm *Form, std::string name, std::string target)
 {
     if (name == "PresidentialPardonForm")
         Form = new PresidentialPardonForm(target);

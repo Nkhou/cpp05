@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:02 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 20:08:51 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:50:50 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ Intern &Intern::operator=(Intern const &other)
     return *this;
 }
 
-Form *Intern::makeForm(std::string name, std::string target)
+AForm *Intern::makeForm(std::string name, std::string target)
 {
-    Form *Form = NULL;
+    AForm *Form = NULL;
     Form = Form->makeForm(name, target);
     if (Form == NULL)
     {

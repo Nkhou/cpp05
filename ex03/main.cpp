@@ -6,7 +6,7 @@
 /*   By: nkhoudro <nkhoudro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:21:11 by nkhoudro          #+#    #+#             */
-/*   Updated: 2024/02/14 20:30:11 by nkhoudro         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:01:26 by nkhoudro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int main()
 {
     try
     {
-        Bureaucrat Bureaucrat("najat", 10);
+        Bureaucrat Bureaucrat("najat", 30);
         Intern intern;
-        Form *Form;
+        AForm *Form;
         Form = intern.makeForm("ShrubberyCreationForm", "home");
         Bureaucrat.signForm(*Form);
         Bureaucrat.executeForm(*Form);
